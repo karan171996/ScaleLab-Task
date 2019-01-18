@@ -46,12 +46,10 @@ class Home extends Component {
             e.target.value = '';
         }
         var year = e.target.value;
-        console.log(year,newList);
         var newData = newList.filter( item => {
             if(item.Year === year)
             return item;
         });
-        console.log(newData);
         if(newData.length){
             this.setState({
                 moviesName:newData
@@ -61,14 +59,12 @@ class Home extends Component {
             this.setState({
                 moviesName:this.state.movieData
             },()=>{
-                console.log(this.state.moviesName)
             });
         }
         else{
             this.setState({
                 moviesName:this.state.movieData
             },()=>{
-                console.log(this.state.moviesName)
             });
         }
     }
@@ -77,7 +73,6 @@ class Home extends Component {
              index :this.state.index + 1,
             //  selectedData :null
          });
-         console.log(this.state.index);
          this.getResponse(this.state.searchedValue ,this.state.index);
          
     }
@@ -87,7 +82,6 @@ class Home extends Component {
             // selectedData :null
 
         });
-        console.log(this.state.index);
         this.getResponse(this.state.searchedValue ,this.state.index);
     }
 
@@ -101,7 +95,6 @@ class Home extends Component {
     }
     render() {
         const {searchedValue, index, moviesName, showDiv} =this.state;
-        console.log(moviesName);
         var descendingData = moviesName && (moviesName.sort((a,b)=>{return b.Year - a.Year}));
         return (
             <div>
@@ -186,7 +179,7 @@ class Home extends Component {
                 } */}
                 {
                    moviesName &&
-                   index > 1 && 
+                   index > 0 && 
                     <button type="button" className="btn btn-primary" onClick ={this.pageDown}>Previous Page</button>
 
                 }
